@@ -1,3 +1,4 @@
+// Merge two sorted lists
 struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
     struct ListNode dummy;
     struct ListNode* tail = &dummy;
@@ -18,12 +19,13 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
     return dummy.next;
 }
 
+// Main function
 struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
     if (listsSize == 0) return NULL;
 
+    // Keep merging pairs of lists
     while (listsSize > 1) {
-        int i = 0;
-        int j = 0;
+        int i = 0, j = 0;
 
         while (i < listsSize) {
             if (i + 1 < listsSize) {
@@ -34,7 +36,7 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
             i += 2;
         }
 
-        listsSize = j;  // reduce number of lists
+        listsSize = j; // reduce size
     }
 
     return lists[0];
